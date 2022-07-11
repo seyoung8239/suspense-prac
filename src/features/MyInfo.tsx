@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import fetchData from "../api/fetchData";
 
 interface MyInfoType {
     name: string;
@@ -6,18 +7,10 @@ interface MyInfoType {
     job: string;
 }
 
+const resource = fetchData("/myuserinfo");
+
 function MyInfo() {
-    const [myInfo, setMyInfo] = useState<MyInfoType>();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch("/myuserinfo");
-            const json = await res.json();
-
-            setMyInfo(json);
-        };
-        fetchData();
-    }, []);
+    const myInfo = resource.read();
 
     return (
         <>
