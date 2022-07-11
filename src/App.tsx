@@ -7,12 +7,8 @@ import MyInfo from "./features/MyInfo";
 function App() {
     return (
         <div className="App">
-            <Suspense fallback={<Loading />}>
-                <UserList />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <MyInfo />
-            </Suspense>
+            <UserList />
+            <MyInfo />
         </div>
     );
 }
